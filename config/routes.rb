@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  resources(:favorites)
+  resource(:schedule)
+  resources(:shopping_carts)
+  resources(:ticket_orders)
+  resources(:tickets)
+  resources(:gigs)
+  resources(:concerts)
+  resources(:bands)
+  resources(:venues)
+  devise_for(:users)
+  root(to: "schedules#show")
 end
