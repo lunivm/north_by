@@ -9,7 +9,7 @@
       <div class="col-span-3">
         <div class="name">
           <div class="text-lg font-bold">
-            <%= link_to(concert.name, concert) %>
+            <%= link_to(concert.name, concert, data: {"turbo-frame": "_top"}) %>
           </div>
         </div>
         <div class="bands">
@@ -22,7 +22,7 @@
           <%= concert.venue.name %>
         </div>
       </div>
-      <div class="col-span-1 text-xl">
+      <div class="col-span-1">
         <% if concert.sold_out? %>
           Sold out
         <% else %>
@@ -31,7 +31,7 @@
         <% end %>
         <br>
         <br>
-        <div class="flex">
+        <div class="flex space-x-4">
           <% if current_user %>
             <% if current_user %>
               <%= link_to(
@@ -45,14 +45,16 @@
                     "Remove Favorite",
                     favorite_path(id: current_user.favorite(concert)),
                     method: "delete",
-                    class: SimpleForm.button_class + " border-solid border-1 border-gray-800 rounded p-1"
+                    class: SimpleForm.button_class + " border-solid border-2 border-fuchsia-600 rounded p-1 text-fuchsia-600",
+                    data: {"turbo-frame": "_top"}
                   ) %>
             <% else %>
               <%= button_to(
                     "Make Favorite",
                     favorites_path(concert_id: concert.id),
                     method: "post",
-                    class: SimpleForm.button_class + " border-solid border-2 border-gray-800 rounded p-1"
+                    class: SimpleForm.button_class + " border-solid border-2 border-fuchsia-600 rounded p-1 text-fuchsia-600",
+                    data: {"turbo-frame": "_top"}
                   ) %>
             <% end %>
           <% end %>

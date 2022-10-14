@@ -34,7 +34,7 @@
           <%= f.input :ilk, collection: Concert.ilks, label: false %>
           <%= f.input :access, collection: Concert.accesses, label: false %>
           <%= f.button :submit, class: "border-solid border-2 border-gray-800 rounded p-1" %>
-          <%= link_to "Cancel", concert_path(@concert), class: "#{SimpleForm.button_class} border-solid border-2 border-gray-800 rounded p-1"%>
+          <%= link_to "Cancel", concert_path(@concert, inline: true), class: "#{SimpleForm.button_class} border-solid border-2 border-gray-800 rounded p-1"%>
         </div>
       </div>
     </article>

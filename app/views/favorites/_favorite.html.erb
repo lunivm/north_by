@@ -20,7 +20,7 @@
         <%= concert.venue.name %>
       </div>
     </div>
-    <div class="col-span-1 text-xl">
+    <div class="col-span-1">
       <span></span>
       <br>
       <br>
@@ -29,7 +29,7 @@
               "Remove Favorite",
               favorite_path(id: favorite.id),
               method: "delete",
-              class: SimpleForm.button_class
+              class: "#{SimpleForm.button_class} border-solid border-2 border-fuchsia-600 rounded p-1 text-fuchsia-600"
             ) %>
       </div>
     </div>

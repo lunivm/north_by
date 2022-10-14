@@ -18,7 +18,7 @@ class ConcertsController < ApplicationController
   # GET /concerts/1
   # GET /concerts/1.json
   def show
-    if request.headers['Turbo-Frame']
+    if params[:inline]
       render(@concert)
     end
   end
