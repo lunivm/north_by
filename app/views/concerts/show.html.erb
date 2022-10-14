@@ -58,11 +58,14 @@
           <% @concert.venue.seats_per_row.times do |seat| %>
             <% ticket = @concert.find_ticket_at(row: row + 1, number: seat + 1) %>
             <td>
-              <%= link_to(ticket_path(ticket.id),
-                    method: :patch) do %>
-                <div class="<%= ticket.color_for(current_user) %> p-4 m-2 border-black border-4 button hover:bg-blue-300 text-lg">
-                  <%= seat + 1 %>
-                </div>
+              <% if ticket.present? %>
+                <%= link_to(ticket_path(ticket.id), method: :patch) do %>
+                  <div class="<%= ticket.color_for(current_user) %> p-4 m-2 border-black border-4 button hover:bg-blue-300 text-lg">
+                    <%= seat + 1 %>
+                  </div>
+                <% end %>
+              <% else %>
+                <h1> error row <%= row%>, seat <%= seat%></h1>
               <% end %>
             </td>
           <% end %>

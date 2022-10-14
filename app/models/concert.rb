@@ -21,6 +21,15 @@
 #  updated_at  :datetime         not null
 #  venue_id    :bigint           not null
 #
+
+# class GoodnessValidator < ActiveModel::Validator
+#   def validate(record)
+#     # if record.first_name == "Evil"
+#       record.errors.add :base, "This person is evil"
+#     # end
+#   end
+# end
+
 class Concert < ApplicationRecord
   belongs_to :venue
   has_many(
@@ -32,6 +41,9 @@ class Concert < ApplicationRecord
 
   has_many :bands, through: :gigs
   has_many :tickets, dependent: :destroy
+
+  # validates_with GoodnessValidator
+  validates :name, presence: true
 
   enum ilk: {concert: "concert", meet_n_greet: "meet_n_greet", battle: "battle"}
   enum access: {general: "general", members: "members", vips: "vips"}

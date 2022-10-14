@@ -18,6 +18,9 @@ class ConcertsController < ApplicationController
   # GET /concerts/1
   # GET /concerts/1.json
   def show
+    if request.headers['Turbo-Frame']
+      render(@concert)
+    end
   end
 
   # GET /concerts/new
@@ -57,7 +60,8 @@ class ConcertsController < ApplicationController
     respond_to do |format|
       if @concert.update(concert_params)
         format.html do
-          redirect_to(@concert, notice: "Concert was successfully updated.")
+          # redirect_to(@concert, notice: "Concert was successfully updated.")
+          render(@concert)
         end
 
         format.json { render(:show, status: :ok, location: @concert) }
