@@ -35,27 +35,27 @@
           <% if current_user %>
             <% if current_user %>
               <%= link_to(
-                    "Edit",
                     edit_concert_path(concert),
-                    class: SimpleForm.button_class + " border-solid border-2 border-gray-800 rounded p-1"
-                  ) %>
+                    class: SimpleForm.button_class + " border-solid border-2 border-gray-800 rounded p-1",
+                    title: "Edit"
+                  ) do %>
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
+                <% end %>
             <% end %>
             <% if current_user.favorite(concert) %>
-              <%= button_to(
-                    "Remove Favorite",
-                    favorite_path(id: current_user.favorite(concert)),
-                    method: "delete",
-                    class: SimpleForm.button_class + " border-solid border-2 border-fuchsia-600 rounded p-1 text-fuchsia-600",
-                    data: {"turbo-frame": "_top"}
-                  ) %>
+              <%= render("shared/favorite_button",
+                path: favorite_path(id: current_user.favorite(concert)),
+                method: "delete",
+                enabled: current_user.favorite(concert),
+                title: "Add to Favorite"
+              ) %>
             <% else %>
-              <%= button_to(
-                    "Make Favorite",
-                    favorites_path(concert_id: concert.id),
-                    method: "post",
-                    class: SimpleForm.button_class + " border-solid border-2 border-fuchsia-600 rounded p-1 text-fuchsia-600",
-                    data: {"turbo-frame": "_top"}
-                  ) %>
+              <%= render("shared/favorite_button",
+                path: favorites_path(concert_id: concert.id),
+                method: "post",
+                enabled: current_user.favorite(concert),
+                title: "Make Favorite"
+              ) %>
             <% end %>
           <% end %>
         </div>
