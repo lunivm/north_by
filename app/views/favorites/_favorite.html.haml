@@ -1,0 +1,28 @@
+- concert = favorite.concert
+%article.my-6{:id => "#{dom_id(favorite)}"}
+  .grid.gap-4.grid-cols-5
+    .col-span-1.text-xl
+      = concert.start_time.by_example("Jan 02 @ 3:04 PM")
+    .col-span-3
+      .name
+        .text-lg.font-bold
+          = link_to(concert.name, concert)
+      .bands
+        = concert.bands.map(&:name).join(", ")
+      .genres
+        = concert.genre_tags.split(",").to_sentence
+      .text-gray-500.font-bold
+        = concert.venue.name
+    .col-span-1
+      %span
+      %br/
+      %br/
+      .flex
+        = button_to(                                                                               |
+            favorite_path(id: favorite.id),                                                        |
+            method: "delete",                                                                      |
+            class: "#{SimpleForm.button_class} border-solid border-2 border-gray-800 rounded p-1", |
+            title: "Remove Favorite"                                                               |
+          ) do                                                                                     |
+          %svg.w-6.h-6{:fill => "none", :stroke => "currentColor", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
+            %path{:d => "M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z", "stroke-linecap" => "round", "stroke-linejoin" => "round", "stroke-width" => "2"}

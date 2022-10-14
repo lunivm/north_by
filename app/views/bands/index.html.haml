@@ -1,0 +1,20 @@
+%p#notice= notice
+%h1 Bands
+%table
+  %thead
+    %tr
+      %th Name
+      %th Description
+      %th genre tags
+      %th{:colspan => "3"}
+  %tbody
+    - @bands.each do |band|
+      %tr
+        %td= band.name
+        %td= band.description
+        %td= band.genre_tags
+        %td= link_to "Show", band
+        %td= link_to "Edit", edit_band_path(band)
+        %td= link_to "Destroy", band, method: :delete, data: {confirm: "Are you sure?"}
+%br/
+= link_to "New Band", new_band_path

@@ -1,0 +1,16 @@
+%p#notice= notice
+%p
+  %strong Band:
+  = @gig.band_id
+%p
+  %strong Concert:
+  = @gig.concert_id
+%p
+  %strong Order:
+  = @gig.order
+%p
+  %strong Duration minutes:
+  = @gig.duration_minutes
+= link_to "Edit", edit_gig_path(@gig)
+|
+= link_to "Back", gigs_path

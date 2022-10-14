@@ -1,0 +1,10 @@
+= turbo_frame_tag("favourite-concerts") do
+  %section.my-4
+    .text-3xl.font-bold.text-fuchsia-600 Favorite Concerts
+    #no-favorites.text-xl.font-bold
+      - if current_user.favorites.empty?
+        No favorite concerts yet
+    #favorite-concerts-list
+      - current_user.favorites.each do |favorite|
+        %hr.border-fuchsia-600/
+        = render(favorite)

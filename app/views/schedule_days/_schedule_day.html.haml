@@ -1,0 +1,8 @@
+%h2.text-3xl.font-bold.my-4
+  = schedule_day.day.by_example("Monday, January 2, 2006")
+  %span{:class => "#{SimpleForm.button_class} py-1 text-xl font-semibold"}
+    Hide
+- if show
+  %section.js--day-text
+    - schedule_day.concerts.sort_by(&:start_time).each do |concert|
+      = render(concert)

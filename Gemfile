@@ -22,6 +22,8 @@ gem "simple_form"
 gem "simple_form-tailwind"
 gem "table_print"
 
+gem "haml-rails"
+
 # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
 gem "jsbundling-rails"
 

@@ -1,0 +1,19 @@
+%p#notice= notice
+%p
+  %strong Concert:
+  = @ticket.concert_id
+%p
+  %strong Row:
+  = @ticket.row
+%p
+  %strong Number:
+  = @ticket.number
+%p
+  %strong User:
+  = @ticket.user_id
+%p
+  %strong Status:
+  = @ticket.status
+= link_to "Edit", edit_ticket_path(@ticket)
+|
+= link_to "Back", tickets_path

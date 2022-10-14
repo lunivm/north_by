@@ -1,0 +1,16 @@
+%p#notice= notice
+%p
+  %strong Name:
+  = @venue.name
+%p
+  %strong Description:
+  = @venue.description
+%p
+  %strong Rows:
+  = @venue.rows
+%p
+  %strong Seats per row:
+  = @venue.seats_per_row
+= link_to "Edit", edit_venue_path(@venue)
+|
+= link_to "Back", venues_path
