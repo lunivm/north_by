@@ -21,7 +21,7 @@
         = button_to(                                                                               |
             favorite_path(id: favorite.id),                                                        |
             method: "delete",                                                                      |
-            class: "#{SimpleForm.button_class} border-solid border-2 border-gray-800 rounded p-1", |
+            class: SimpleForm.button_class,                                                        |
             title: "Remove Favorite"                                                               |
           ) do                                                                                     |
           %svg.w-6.h-6{:fill => "none", :stroke => "currentColor", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
