@@ -8,16 +8,23 @@
 #---
 class FavoritesController < ApplicationController
   def create
-    Favorite.create(user: current_user, concert_id: params[:concert_id])
+    @favorite = Favorite.create(user: current_user, concert_id: params[:concert_id])
 
-    render(partial: 'favorites/list')
+    respond_to do |format|
+      format.html { render(partial: 'favorites/list') }
+      format.turbo_stream
+    end
+
   end
 
   def destroy
     @favorite = Favorite.find(params[:id])
     @favorite.destroy
 
-    render(partial: 'favorites/list')
+    respond_to do |format|
+      format.html { render(partial: 'favorites/list') }
+      format.turbo_stream
+    end
   end
 
   private def favorite_params

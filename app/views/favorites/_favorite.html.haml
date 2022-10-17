@@ -1,5 +1,6 @@
 - concert = favorite.concert
 %article.my-6{:id => "#{dom_id(favorite)}"}
+  %hr.border-fuchsia-600
   .grid.gap-4.grid-cols-5
     .col-span-1.text-xl
       = concert.start_time.by_example("Jan 02 @ 3:04 PM")
